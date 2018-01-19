@@ -4,7 +4,7 @@ data "template_file" "myapp-task-definition-template" {
   template               = "${file("templates/app.json.tpl")}"
   vars {
     REPOSITORY_URL = "${replace("${aws_ecr_repository.myapp.repository_url}", "https://", "")}"
-    APP_VERSION = "${var.MYAPP_VERSION}"
+    MYAPP_VERSION = "${var.MYAPP_VERSION}"
   }
 }
 
