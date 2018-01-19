@@ -15,10 +15,14 @@ node('tomcat-user') {
    customImage.push()
     }
   }        
-    stage ('Terraform/ECS Build') {
+    stage ('Terraform Plan') {
        sh 'pwd'
        sh 'cd terraform-code && terraform plan -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
      
+   }
+   stage ('Terraform Apply') {
+       sh 'cd terraform-code && terraform plan -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
+
    }
 
 }
