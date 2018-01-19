@@ -15,5 +15,10 @@ node('tomcat-user') {
    customImage.push()
     }
   }        
+    stage ('Terraform/ECS Build') {
+       sh 'cd terraform-code'
+       sh 'terraform apply -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${env.BUILD_ID      }
+     
+   }
 
 }
