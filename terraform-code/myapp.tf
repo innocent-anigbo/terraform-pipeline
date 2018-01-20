@@ -8,7 +8,7 @@ data "template_file" "myapp-task-definition-template" {
 }
 
 resource "aws_ecs_task_definition" "myapp-task-definition" {
-  family                = "myapp"
+  family                = "${var.MYAPP_VERSION}"
   container_definitions = "${data.template_file.myapp-task-definition-template.rendered}"
 }
 
