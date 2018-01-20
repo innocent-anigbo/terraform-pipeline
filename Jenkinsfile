@@ -17,14 +17,14 @@ node('tomcat-user') {
   }        
     stage ('Terraform Plan') {
        sh 'pwd'
-       sh 'cd terraform-code && terraform init -backend-config="bucket=terraform-state-file-inno" -backend-config="key=terraform" -backend-config="region=eu-west-1" && terraform plan -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
+       sh 'cd terraform-code && terraform init -backend-config="bucket=terraform-state-file-inno" -backend-config="key=terraform" -backend-config="region=eu-west-1" && terraform plan -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
      
    }
    stage ('Terraform Apply') {
         timeout(time:5, unit:'DAYS'){
             input message:'Approve Infrastructure setup and Deployment?', submitter: 'innocent.anigbo@mykezy.com'
                 }
-       sh 'cd terraform-code && terraform apply -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
+       sh 'cd terraform-code && terraform apply -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
 
    }
 
