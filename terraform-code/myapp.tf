@@ -46,6 +46,7 @@ resource "aws_elb" "myapp-elb" {
 resource "aws_ecs_service" "myapp-service" {
   count = "${var.MYAPP_SERVICE_ENABLE}"
   name = "${var.MYAPP_VERSION}"
+  deployment_maximum_percent = 50
   cluster = "${aws_ecs_cluster.example-cluster.id}"
   task_definition = "${aws_ecs_task_definition.myapp-task-definition.arn}"
   desired_count = 2
