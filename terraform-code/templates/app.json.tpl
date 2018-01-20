@@ -4,7 +4,7 @@
     "memory": 256,
     "name": "myapp",
     "cpu": 256,
-    "image": "${REPOSITORY_URL}:${MYAPP_VERSION}",
+    "image": "540098831271.dkr.ecr.eu-west-1.amazonaws.com/myapp:${MYAPP_VERSION}",
     "workingDirectory": "/app",
     "command": ["npm", "start"],
     "portMappings": [
