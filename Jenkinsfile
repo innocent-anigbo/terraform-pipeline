@@ -24,7 +24,7 @@ node('tomcat-user') {
         timeout(time:5, unit:'DAYS'){
             input message:'Approve Infrastructure setup and Deployment?', submitter: 'innocent.anigbo@mykezy.com'
                 }
-       sh 'cd terraform-code && terraform apply -auto-approve -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
+       sh 'cd terraform-code && terraform apply -target aws_ecs_service.myapp-service -var MYAPP_SERVICE_ENABLE="1" -var MYAPP_VERSION=${BUILD_NUMBER}'
 
    }
 
