@@ -27,7 +27,7 @@ resource "aws_elb" "myapp-elb" {
     unhealthy_threshold = 3
     timeout = 30
     target = "HTTP:3000/"
-    interval = 60
+    interval = 10
   }
 
   cross_zone_load_balancing = true

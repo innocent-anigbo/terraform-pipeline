@@ -17,7 +17,7 @@ resource "aws_autoscaling_group" "ecs-example-autoscaling" {
   vpc_zone_identifier  = ["${aws_subnet.main-public-1.id}", "${aws_subnet.main-public-2.id}"]
   launch_configuration = "${aws_launch_configuration.ecs-example-launchconfig.name}"
   min_size             = 2
-  max_size             = 2
+  max_size             = 3
   tag {
       key = "Name"
       value = "ecs-ec2-container"
