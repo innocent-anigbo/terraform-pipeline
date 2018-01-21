@@ -44,7 +44,7 @@ resource "aws_elb" "myapp-elb" {
 }
 
 resource "aws_ecs_service" "myapp-service" {
-  name = myapp
+  name = "myapp"
   deployment_minimum_healthy_percent = 50
   cluster = "${aws_ecs_cluster.example-cluster.id}"
   task_definition = "${aws_ecs_task_definition.myapp-task-definition.arn}"
