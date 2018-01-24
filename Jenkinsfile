@@ -9,9 +9,7 @@ node('tomcat-user') {
      }
    }
      stage ('Docker build/push') {
-       def ecr = "`aws ecr get-login --region eu-west-1`"
-       ecr
-       docker.withRegistry('https://540098831271.dkr.ecr.eu-west-1.amazonaws.com') {
+       docker.withRegistry('https://540098831271.dkr.ecr.eu-west-1.amazonaws.com', 'ecr-2') {
        def customImage = docker.build("540098831271.dkr.ecr.eu-west-1.amazonaws.com/myapp:${BUILD_NUMBER}")
 
    customImage.push()
