@@ -1,4 +1,4 @@
-node('master') {
+node('tomcat-user') {
       stage ('git checkout stage') {
             checkout scm
     }
