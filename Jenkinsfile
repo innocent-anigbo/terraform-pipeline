@@ -24,7 +24,7 @@ node('tomcat-user') {
         timeout(time:5, unit:'DAYS'){
             input message:'Approve Infrastructure setup and Deployment?', submitter: 'innocent.anigbo@mykezy.com'
                 }
-       sh 'cd terraform-code && terraform apply -var MYAPP_VERSION=${BUILD_NUMBER}'
+       sh 'cd terraform-code && terraform apply -var MYAPP_VERSION=${BUILD_NUMBER} -auto-approve'
 
    }
 
